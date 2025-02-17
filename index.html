@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLL - (Orges La Liga) - 2025 Season</title>
+    <style>
+        /* CSS Reset and Refined Dark Theme Base - Legendary Edition */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Animations - Advanced Suite */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleUpPulse {
+            0% { transform: scale(1); background-color: #4a148c; }
+            50% { transform: scale(1.1); background-color: #6a1b9a; }
+            100% { transform: scale(1); background-color: #4a148c; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes headerZoom {
+            0% { background-size: 105%; }
+            100% { background-size: cover; }
+        }
+        @keyframes pulse-opacity {
+            0% { opacity: 0.7; }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.7; }
+        }
+
+
+        /* Hero Header - Dark, Impactful, White Text - **IMAGE BLUR ONLY** */
+        header {
+            /* background-image: url('oll-crew.webp'), linear-gradient(160deg, #2a002a, #000000);  REMOVED background-image from here */
+            background-blend-mode: normal;
+            background-size: 105%; /* Start slightly zoomed in */
+            background-position: center center;
+            color: #fff;
+            text-align: center;
+            padding: 70px 20px 100px 20px; /*  Slightly reduced vertical padding in header */
+            margin-bottom: 60px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            position: relative; /* Needed for pseudo-element positioning */
+            overflow: hidden;
+            border-bottom: 3px solid #444;
+            animation: fadeIn 1.0s ease-out, headerZoom 10s ease-out forwards; /* Zoom animation on header background */
+            /* filter: blur(3px);  REMOVED blur from header itself */
+        }
+
+        header::before { /*  PSEUDO-ELEMENT for background image BLUR */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('oll-crew.webp'), linear-gradient(160deg, #2a002a, #000000); /* Background image moved here */
+            background-size: cover; /* Or '105%' if you want the zoom to apply to the blurred layer */
+            background-position: center center;
+            filter: blur(3px); /*  BLUR APPLIED ONLY TO PSEUDO-ELEMENT (the image layer) */
+            z-index: -1; /*  Place background image BEHIND header content */
+        }
+
+
+        header:after { /*  Kept the white highlight overlay, renamed to ::after to avoid confusion*/
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.05);
+            transform: skewY(-3deg);
+            transform-origin: 0 0;
+            z-index: 0; /* Keep it above the blurred background but below text */
+        }
+
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 4.0rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            position: relative;
+            z-index: 1; /* Ensure text is above background layers */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            margin-top: 15px;
+            color: #f0f0f0;
+            position: relative;
+            z-index: 1; /* Ensure text is above background layers */
+            margin-bottom: 35px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Modern Navigation Bar - Animated Pulse Hover */
+        nav {
+            background-color: transparent;
+            padding: 0 20px 40px 20px; /* Slightly reduced padding below nav */
+            position: relative;
+            z-index: 101;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: none;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 16px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            margin: 0 20px;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #fff;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.6);
+            animation: scaleUpPulse 1.5s infinite alternate; /* Pulse animation on hover */
+        }
+        nav a.active {
+            animation: scaleUpPulse 1.5s infinite alternate, fadeIn 0.8s ease-out forwards; /* Pulse and fade-in for active */
+        }
+
+
+        /* Content Section - Advanced Animations, Staggered Fade-In */
+        section {
+            padding: 70px 50px; /* Slightly reduced vertical padding in sections */
+            text-align: left;
+            max-width: 1250px;
+            margin: 0 auto 70px auto; /* Slightly reduced bottom margin for sections */
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h60v60H0z' fill='%231a1a1a'/%3E%3Cpath d='M7 9h26v2H7V9zm0 8h38v2H7v-2zm0 8h32v2H7v-2zm0 8h44v2H7v-2zm0 8h20v2H7v-2zm0 8h50v2H7v-2z' fill='%23222' fill-opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+            border: 2px solid #2c2c2c;
+            overflow: hidden;
+            animation: fadeIn 1.0s ease-out;
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+            padding-bottom: 90px;
+            box-shadow: 0 0 0 5px rgba(34, 34, 34, 0.1) inset;
+        }
+
+        section.hidden {
+            display: none !important;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out, transform 0.7s ease-out;
+            pointer-events: none;
+            transform: translateY(20px); /* Increased slide up on hide */
+        }
+        section:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1.0s ease-in, visibility 1.0s ease-in, transform 1.0s cubic-bezier(0.175, 0.885, 0.320, 1.275); /* More pronounced show transition - added cubic-bezier for overshoot */
+            transform: translateY(0);
+        }
+
+        section h2, section p, section table, section ul, section .news-placeholder, section .awards-list, .news-item, #future-stars .future-stars-placeholder {
+            opacity: 0;
+            transform: translateY(20px); /* Initial position for staggered animation */
+            transition: opacity 1.0s ease-out, transform 1.0s cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Same transition as section show, but applied individually */
+            transition-delay: 0.2s; /* Slight delay for staggered effect */
+        }
+
+        section:not(.hidden) h2, section:not(.hidden) p, section:not(.hidden) table, section:not(.hidden) ul, section:not(.hidden) .news-placeholder, section:not(.hidden) .awards-list, section:not(.hidden) .news-item, section:not(.hidden) #future-stars .future-stars-placeholder {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        section h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 50px; /* Slightly reduced margin below section titles */
+            color: #fff;
+            font-size: 4.0rem;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 1;
+            transition-delay: 0.3s; /* Increased delay for title */
+            font-weight: 700; /* Slightly bolder section titles */
+        }
+
+        section p {
+            color: #d0d0d0;
+            font-size: 1.25rem;
+            line-height: 2.0;
+            margin-bottom: 30px; /* Slightly reduced margin below paragraphs */
+            opacity: 0.95;
+            transition-delay: 0.4s; /* Further delay for paragraphs */
+            font-weight: 400; /*  Slightly adjusted paragraph font-weight*/
+        }
+
+        /* Enhanced Dark Table Styling - Animated Hover */
+        table {
+            width: 100%;
+            margin: 50px auto; /* Slightly reduced table margins */
+            border-collapse: collapse;
+            background-color: #212121;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #3a3a3a;
+            animation: fadeIn 1.2s ease-out;
+            transition-delay: 0.5s; /* Even more delay for table appearance */
+        }
+
+        th, td {
+            padding: 22px 30px;
+            text-align: left;
+            border-bottom: 2px solid #4a4a4a;
+            color: #f0f0f0;
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: 0.05rem;
+        }
+
+        th {
+            background: linear-gradient(to bottom, #6a1b9a, #880e4f);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:nth-child(even) { background-color: #282828; }
+        tbody tr:hover {
+            background-color: #3a3a3a;
+            transition: background-color 0.2s ease-in-out 0.1s, transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Added delay to background transition, smoother lift */
+            transform: translateY(-5px) scale(1.02); /* Increased lift and scale on hover */
+            box-shadow: 0 6px 8px rgba(0,0,0,0.5); /* Stronger shadow on hover */
+        }
+        td:first-child, th:first-child { text-align: center; }
+
+        /* Homepage Specific Styles - Animated Sections */
+        #home { text-align: center; }
+        #home h2 { text-align: center; margin-bottom: 70px; }
+
+        .homepage-section {
+            margin-bottom: 70px; /* Slightly reduced bottom margin for homepage sections */
+            padding: 60px; /* Slightly reduced padding in homepage sections */
+            background-color: #212121;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border: 2px solid #3a3a3a;
+        }
+
+        .homepage-section h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #9c27b0;
+            margin-bottom: 30px; /* Slightly reduced margin below homepage section h3 */
+            font-size: 3.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.7);
+            font-weight: 700; /* Slightly bolder homepage section h3 */
+        }
+
+        .homepage-section p { font-size: 1.3rem; line-height: 2.1; margin-bottom: 30px; } /* Slightly reduced margin below homepage section p */
+        .homepage-section ul { list-style-type: square; padding-left: 40px; margin-top: 20px; transition-delay: 0.6s; } /* Added delay for lists */
+        .homepage-section li { margin-bottom: 15px; }
+
+        /* News Section Styling - Animated */
+        #news { padding-top: 70px; padding-bottom: 70px; position: relative; /*  Needed for arrow positioning */ }
+        #news h2 { margin-bottom: 40px; transition-delay: 0.3s; font-size: 4.2rem; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); margin-top: 30px;} /* Increased news header size and shadow, reduced margin, added top margin */
+
+        /* News Banner Images */
+        .news-banner-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 40px auto; /* Spacing below banner images */
+            border-radius: 12px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out; /* Fade-in for banner images */
+        }
+
+
+        /* News Navigation Arrows - "Prem Style" Visual */
+        .news-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: #777;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+            user-select: none;
+        }
+        .news-nav-arrow:hover { opacity: 1; color: #999; }
+        .news-nav-prev { left: 10px; }
+        .news-nav-next { right: 10px; }
+
+
+        /* News Item Styling */
+        .news-item {
+            margin-bottom: 40px;
+            padding: 35px;
+            background-color: #212121;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+            position: relative; /* For "Read More" link positioning */
+            background-image: url("data:image/svg+xml,%3Csvg width='42' height='42' viewBox='0 0 42 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232a2a2a' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M0 0h42v42H0zM6 0h30v6H6zM0 6h6v6H0zM36 6h6v6h-6zM6 12h30v6H6v-6zM0 12h6v6H0v-6zm36 0h6v6h-6v-6zM6 18h30v6H6v-6zM0 18h6v6H0v-6zm36 0h6v6h-6v-6zM6 24h30v6H6v-6zM0 24h6v6H0v-6zm36 0h6v6h-6v-6zM6 30h30v6H6v-6zM0 30h6v6H0v-6zm36 0h6v6h-6v-6zM6 36h30v6H6v-6zM0 36h6v6H0v-6zm36 0h6v6h-6v-6z'/%3E%3C/g%3E%3C/svg%3E"); /* Subtle background texture for news items */
+        }
+        .news-item h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        .news-item p {
+            color: #ddd;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+        .news-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .news-item .read-more-link {
+            position: absolute; /* Positioning "Read More" at the bottom */
+            bottom: 15px;
+            right: 20px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.2s, color 0.2s;
+        }
+        .news-item .read-more-link:hover {
+            opacity: 1;
+            color: #ccc;
+        }
+
+
+        .news-placeholder {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #bbb; /* Softened placeholder text color */
+            padding: 50px 0;
+            opacity: 0.85;
+            transition-delay: 0.5s;
+            margin-bottom: 40px; /*  Added margin below placeholder */
+        }
+        .news-placeholder i {
+            display: block;
+            font-size: 3.2rem; /* Slightly larger news placeholder icon */
+            margin-bottom: 20px;
+            color: #888; /* Softened placeholder icon color */
+            opacity: 0.75;
+            transition-delay: 0.4s;
+            animation: pulse-opacity 2.5s infinite alternate; /* Pulsating opacity animation for placeholder */
+        }
+
+        /* Awards Section Styling - Animated */
+        #awards { padding-top: 70px; padding-bottom: 70px; } /* Reduced padding in awards section */
+        #awards h2 { margin-bottom: 50px; transition-delay: 0.3s; border-top: 1px solid #333; padding-top: 50px; margin-top: -20px;} /* Reduced title margin, added top border and padding */
+        .awards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for awards */
+            gap: 25px; /* Slightly reduced gap in awards list */
+            max-width: 1000px; /* Max width for award list */
+            margin: 0 auto;
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(20px); /* Initial position for animation */
+            transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Animation properties */
+            transition-delay: 0.6s; /* Delay for awards list animation */
+        }
+        section:not(.hidden) .awards-list { /* Show animation when section is visible */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .award-item {
+            background-color: #212121;
+            padding: 25px; /* Slightly reduced padding in award items */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            text-align: center;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            border: 1px solid #333;
+            opacity: 0; /* Individual award item animation */
+            transform: translateY(20px);
+            transition-delay: calc(0.7s + var(--item-delay)); /* Staggered animation for items */
+            background-image: url("data:image/svg+xml,%3Csvg width='42' height='42' viewBox='0 0 42 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232a2a2a' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M0 0h42v42H0zM6 0h30v6H6zM0 6h6v6H0zM36 6h6v6h-6zM6 12h30v6H6v-6zM0 12h6v6H0v-6zm36 0h6v6h-6v-6zM6 18h30v6H6v-6zM0 18h6v6H0v-6zm36 0h6v6h-6v-6zM6 24h30v6H6v-6zM0 24h6v6H0v-6zm36 0h6v6h-6v-6zM6 30h30v6H6v-6zM0 30h6v6H0v-6zm36 0h6v6h-6v-6zM6 36h30v6H6v-6zM0 36h6v6H0v-6zm36 0h6v6h-6v-6z'/%3E%3C/g%3E%3C/svg%3E"); /* Subtle background texture for award items */
+        }
+        section:not(.hidden) .award-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .award-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+        }
+        .award-icon {
+            font-size: 3.7rem; /* Slightly Increased Size */
+            color: #ffc107; /* Golden color for icons */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+            background-image: linear-gradient(to bottom, #fdd835, #ffb300); /* GOLD GRADIENT */
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0.15rem 0.3rem rgba(0,0,0,0.7), 0 0 0.1rem #fdd835;        /* Inner Shadow Effect + Glow */
+        }
+        .award-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            color: #eee;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+        }
+        .award-votes {
+            font-style: italic;
+            color: #bbb;
+            font-size: 1.1rem;
+        }
+
+
+        /* Team Logos - Size, Spacing, Animated Hover - Team List Animated Slide-In */
+        .team-logo {
+            max-height: 28px;
+            vertical-align: middle;
+            margin-right: 10px;
+            opacity: 0.9;
+            transition: transform 0.3s ease-in-out;
+        }
+        td:nth-child(2):hover .team-logo, th:nth-child(2):hover .team-logo, #teams ul li:hover .team-logo {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+
+        td:nth-child(2), th:nth-child(2) {
+            display: flex;
+            align-items: center;
+        }
+        #teams ul {
+            opacity: 0; /* Initially hidden for section animation */
+            transform: translateY(20px);
+            transition: opacity 1.0s ease-out, transform 1.0s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+            transition-delay: 0.5s; /* Delay for team list animation */
+        }
+        section:not(.hidden) #teams ul {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        #teams ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px; /* Slightly reduced margin in team list items */
+            font-size: 1.15rem;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 1.0s ease-out, transform 1.0s ease-out; /* Added opacity and transform to transition for slide-in */
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0; /* Initially hidden for slide-in animation */
+            transform: translateX(-30px); /* Start off-screen to the left */
+            animation: slideInLeft 0.8s ease-out forwards; /* Slide-in animation for list items */
+            animation-delay: calc(0.6s + var(--item-delay)); /* Staggered slide-in animation */
+        }
+
+
+        #teams ul li:hover {
+            background-color: #2a2a2a;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+        }
+        #teams ul li img.team-logo {
+            margin-right: 12px;
+        }
+
+
+        /* Future Stars Section Styling - Placeholder */
+        #future-stars { padding-top: 70px; padding-bottom: 70px; text-align: center; }
+        #future-stars h2 { margin-bottom: 50px; transition-delay: 0.3s; font-size: 4.2rem; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); }
+        .future-stars-placeholder {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #bbb; /* Softened placeholder text color */
+            padding: 50px 0;
+            opacity: 0.85;
+            transition-delay: 0.5s;
+            margin-bottom: 40px; /*  Added margin below placeholder */
+        }
+        .future-stars-placeholder i {
+            display: block;
+            font-size: 3.2rem; /* Slightly larger placeholder icon */
+            margin-bottom: 20px;
+            color: #888; /* Softened placeholder icon color */
+            opacity: 0.75;
+            transition-delay: 0.4s;
+            animation: pulse-opacity 2.5s infinite alternate; /* Pulsating opacity animation for placeholder */
+        }
+
+        /* Future Stars Image Styles */
+        .future-star-image {
+            max-width: 100%; /* Responsive width */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            margin: 0 auto 25px auto; /* Center image, spacing below */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6); /* Deeper shadow */
+            animation: fadeIn 1.5s ease-out; /* Fade-in animation */
+        }
+
+
+        /* Responsive Adjustments - Refined Dark Theme Responsive & Animated - Mobile Spacing */
+        @media (max-width: 768px) {
+            header { padding: 45px 15px 85px 15px; margin-bottom: 45px; } /* Further reduced header padding mobile */
+            header h1 { font-size: 2.9rem; letter-spacing: 1.4px; margin-bottom: 14px; } /* Slightly smaller header title mobile */
+            header p { font-size: 1.18rem; margin-bottom: 24px; } /* Slightly smaller header paragraph mobile */
+            .league-logo { display: block; margin: 0 auto 20px auto; max-height: 60px; }
+            nav { flex-direction: column; text-align: center; padding: 10px 15px 25px 15px; position: static; } /* Reduced nav padding mobile */
+            nav a { margin: 8px 0; padding: 12px 20px; font-size: 1.0rem; } /* Slightly smaller nav links mobile */
+            section { padding: 45px 30px; border-radius: 0; box-shadow: none; margin-bottom: 45px; } /* Reduced section padding and margin mobile */
+            section h2 { font-size: 2.7rem; margin-bottom: 35px; } /* Slightly smaller section title mobile */
+            section p { font-size: 1.13rem; margin-bottom: 28px; } /* Slightly smaller section paragraph mobile */
+            table { border-radius: 0; box-shadow: none; margin: 35px auto; } /* Reduced table margin mobile */
+            th, td { padding: 16px 20px; font-size: 0.95rem; } /* Slightly smaller table cell padding and font mobile */
+            .homepage-section { padding: 45px 40px; border-radius: 0; box-shadow: none; margin-bottom: 55px; } /* Reduced homepage section padding and margin mobile */
+            .homepage-section h3 { font-size: 2.3rem; margin-bottom: 28px; } /* Slightly smaller homepage section h3 mobile */
+            .homepage-section p, .homepage-section ul, .homepage-section li { font-size: 1.13rem; } /* Slightly smaller homepage section text mobile */
+            #news .news-placeholder { font-size: 1.15rem; padding: 35px 0; } /* Slightly smaller news placeholder text mobile */
+            #news .news-placeholder i { font-size: 2.4rem; margin-bottom: 15px; } /* Smaller news placeholder icon mobile */
+            .awards-list { grid-template-columns: 1fr; gap: 20px; } /* Further reduced gap in awards list mobile */
+            .award-item { padding: 20px; } /* Even more reduced award item padding on mobile */
+            .award-icon { font-size: 2.8rem; margin-bottom: 8px; } /* Adjust award icon size mobile */
+            .award-title { font-size: 1.3rem; } /* Adjust award title size mobile */
+            .award-votes { font-size: 0.95rem; } /* Adjust award votes size mobile */
+            .news-nav-arrow { font-size: 2.0rem; } /* Slightly smaller news arrows on mobile */
+            .news-banner-image { border-radius: 8px; margin-bottom: 30px; } /* Slightly smaller radius and margin for mobile banners */
+            #future-stars h2 { font-size: 2.7rem; margin-bottom: 35px; } /* Slightly smaller future stars title mobile */
+            #future-stars .future-stars-placeholder { font-size: 1.15rem; padding: 35px 0; } /* Slightly smaller future stars placeholder text mobile */
+            #future-stars .future-stars-placeholder i { font-size: 2.4rem; margin-bottom: 15px; } /* Smaller future stars placeholder icon mobile */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<header>
+    <h1>OLL - (Orges La Liga)</h1>
+    <p>2025 Season - Witness Footballing Greatness</p>
+
+    <nav>
+        <a href="#home" onclick="showSection('home')" class="active">Home</a>
+        <a href="#standings" onclick="showSection('standings')">Standings</a>
+        <a href="#fixtures" onclick="showSection('fixtures')">Fixtures</a>
+        <a href="#news" onclick="showSection('news')">News</a>
+        <a href="#awards" onclick="showSection('awards')">Awards</a>
+        <a href="#teams" onclick="showSection('teams')">Teams</a>
+        <a href="#future-stars" onclick="showSection('future-stars')">Future Stars</a> </nav>
+</header>
+
+<hr class="section-divider">
+
+<section id="home">
+    <h2>Welcome to OLL - (Orges La Liga)</h2>
+
+    <div class="homepage-section">
+        <h3>League Highlights</h3>
+        <p>Catch up on the latest happenings in OLL - (Orges La Liga)!</p>
+        <ul>
+            <li><b>Pre-Season Player Buzz:</b>  The transfer window is heating up! Follow the latest rumors and confirmed signings as teams bolster their squads for the 2025 season.</li>
+            <li><b>New Rivalries Emerge:</b>  With the addition of OLL | LIVERPOOL and OLL | BAYERN MUNICH, prepare for exciting new match-ups and intense rivalries to unfold.</li>
+            <li><b>Fixture Countdown:</b>  The official 2025 season fixture list is just around the corner. Get ready to mark your calendars for a season packed with thrilling footballing action!</li>
+            <li><b>Community Day Approaching:</b>  Don't miss the annual OLL Community Day on January 20th! A fantastic opportunity to meet your favorite players, participate in fun activities, and celebrate the beautiful game with fellow fans.</li>
+        </ul>
+        <p>Stay locked in for more exclusive updates as we eagerly anticipate the season kickoff!</p>
+    </div>
+
+    <div class="homepage-section">
+        <h3>About OLL - (Orges La Liga)</h3>
+        <p>OLL - (Orges La Liga) proudly stands as a premier football league, deeply rooted in the undying passion and electrifying spirit of the beautiful game.  More than just a league, we are a vibrant community heartbeat, nurturing local talent and uniting fans under the banner of footballing devotion. We are wholeheartedly committed to delivering an unparalleled, unforgettable footballing spectacle for every single soul involved.</p>
+        <p>Born from a vision of providing a relentlessly high level of fiercely competitive play, OLL - (Orges La Liga) champions unwavering sportsmanship, dedicated player development, and profound community engagement. Our esteemed league provides a prestigious platform for aspiring athletes to showcase their God-given skills and for passionate fans to immerse themselves in breathtaking, heart-stopping local football drama.</p>
+        <p>We are absolutely, resolutely committed to achieving excellence both on and off the sacred pitch. The OLL - (Orges La Liga) season reaches its zenith with breathtaking playoffs and a climactic championship final guaranteed to keep you teetering on the very edge of your seat, your heart pounding in your chest.  We boast a roster of fiercely dynamic teams, each fueled by an intensely passionate and devoted fanbase, forging a league atmosphere that is not just vibrant, but positively electric and utterly unmatched.</p>
+        <p>Our unwavering, sacred mission is to cultivate a thriving, self-sustaining football ecosystem, providing boundless, limitless opportunities for players of every age and every skill level to wholeheartedly participate in and lose themselves completely within the sport that they passionately adore. We hold sacrosanct the timeless values of impeccable sportsmanship, scrupulous fair play, and deeply meaningful community engagement.  Whether you are a player burning to carve your immortal name into the hallowed OLL history books, a fan desperately craving the unparalleled, spine-tingling atmosphere of a live matchday, or a sponsor yearning to irrevocably align your esteemed brand with pure sporting excellence, we extend the warmest, most heartfelt invitation for you to become an absolutely indispensable part of the ever-expanding, ever-glorious OLL - (Orges La Liga) family!</p>
+        <p><b>League Values:</b></p>
+        <ul>
+            <li><b>Unbreakable Community Focus:</b> We forge indestructible local bonds, fused in the white-hot crucible of shared football passion.</li>
+            <li><b>Unrivaled Excellence in Football:</b> We relentlessly promote stratospheric standards of play and gut-wrenching, nail-biting competition.</li>
+            <li><b>Relentless Player Development:</b> We provide an unparalleled launchpad for extraordinary local talent, enabling them to detonate onto the scene and burn brighter than any star.</li>
+            <li><b>Unquestionable Fair Play and Respect:</b> We uphold the sacred, inviolable integrity of the beautiful game with absolute, unwavering dedication.</li>
+            <li><b>Absolute Accessibility:</b> We make football unequivocally accessible and endlessly, deliriously enjoyable for absolutely every single member of our cherished community.</li>
+        </ul>
+        <p><a href="#teams" onclick="showSection('teams')" class="read-more-link">Meet the Teams &raquo;</a></p>
+    </div>
+</section>
+
+<section id="standings" class="hidden">
+    <h2>League Standings</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Pos</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>1</td><td><img src="team-logos/atalanta.png" alt="Atlanta Logo" class="team-logo">OLL | ATLANTA</td><td>1</td><td>1</td><td>0</td><td>0</td><td>8</td><td>0</td><td>8</td><td>3</td></tr>
+        <tr><td>2</td><td><img src="team-logos/arsenal.png" alt="Arsenal Logo" class="team-logo">OLL | ARSENAL</td><td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>2</td><td>3</td><td>3</td></tr>
+        <tr><td>3</td><td><img src="team-logos/acmilan.png" alt="AC Milan Logo" class="team-logo">OLL | AC MILAN</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>0</td><td>3</td><td>3</td></tr>
+        <tr><td>4</td><td><img src="team-logos/barcelona.png" alt="Barcelona Logo" class="team-logo">OLL | BARCELONA</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>0</td><td>3</td><td>3</td></tr>
+        <tr><td>5</td><td><img src="team-logos/intermilan.png" alt="Inter Milan Logo" class="team-logo">OLL | INTER MILAN</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>2</td><td>1</td><td>3</td></tr>
+        <tr><td>6</td><td><img src="team-logos/astonvilla.png" alt="Aston Villa Logo" class="team-logo">OLL | ASTON VILLA</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td><td>3</td><td>-1</td><td>0</td></tr>
+        <tr><td>7</td><td><img src="team-logos/realmadrid.png" alt="Real Madrid Logo" class="team-logo">OLL | REAL MADRID</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td><td>5</td><td>-3</td><td>0</td></tr>
+        <tr><td>8</td><td><img src="team-logos/atleticomadrid.png" alt="Atletico Madrid Logo" class="team-logo">OLL | ATLETICO MADRID</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>-3</td><td>0</td></tr>
+        <tr><td>9</td><td><img src="team-logos/mancity.png" alt="Manchester City Logo" class="team-logo">OLL | MANCHESTER CITY</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>-3</td><td>0</td></tr>
+        <tr><td>10</td><td><img src="team-logos/dortmund.png" alt="Dortmund Logo" class="team-logo">OLL | DORTMUND</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>8</td><td>-8</td><td>0</td></tr>
+        <tr><td>11</td><td><img src="team-logos/liverpool.png" alt="Liverpool Logo" class="team-logo">OLL | LIVERPOOL</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>12</td><td><img src="team-logos/bayernmunich.png" alt="Bayern Munich Logo" class="team-logo">OLL | BAYERN MUNICH</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="fixtures" class="hidden">
+    <h2>2025 Season Fixtures</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th><th>Match</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>TBD</td><td>OLL | ATALANTA vs OLL | DORTMUND</td></tr>
+        <tr><td>TBD</td><td>OLL | REAL MADRID vs OLL | ARSENAL</td></tr>
+        <tr><td>TBD</td><td>OLL | MANCHESTER CITY vs OLL | BARCELONA</td></tr>
+        <tr><td>TBD</td><td>OLL | INTER MILAN vs OLL | ASTON VILLA</td></tr>
+        <tr><td>TBD</td><td>OLL | AC MILAN vs OLL | ATLETICO MADRID</td></tr>
+        <tr><td>TBD</td><td>OLL | LIVERPOOL vs OLL | BAYERN MUNICH</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="news" class="hidden">
+    <img src="banner1.png" alt="OLL Banner Image" class="news-banner-image">
+    <img src="banner2.png" alt="OLL Banner Image 2" class="news-banner-image">
+
+    <h2>Latest News <i class="fa fa-newspaper-o"></i></h2>
+
+    <i class="news-nav-arrow news-nav-prev fa fa-chevron-left"></i>
+    <i class="news-nav-arrow news-nav-next fa fa-chevron-right"></i>
+
+
+    <div class="news-item">
+        <h3>OrgesITPS Trio Roaring, Justice GK - The Wall!</h3>
+        <img src="trio.png" alt="OrgesITPS Trio">
+        <p>The OrgesITPS attacking trio is tearing up the league! RW #7 is in sensational form, leading the charge with phenomenal stats:</p>
+        <img src="goofy.png" alt="Orges Stats - RW #7">
+        <p><b>RW #7 - Season Stats:</b></p>
+        <ul>
+            <li><b>Goals:</b> 5</li>
+            <li><b>Assists:</b> 9</li>
+            <li><b>MOTM Awards:</b> 3</li>
+            <li><b>Games Played:</b> 8</li>
+            <li><b>Goals Against (Team GA):</b> 14  <span style="font-size: 0.8em; color: #ccc;">(Team defensive record might need some holy work! 😉)</span></li>
+        </ul>
+        <p>But it's not just attack! Goalkeeper Justice GK is proving to be an impenetrable wall in goal, racking up an incredible <b>24 saves in just 6 matches</b>!  Justice has also contributed with <b>2 assists</b> from goal kicks!  Incredible performances on both ends of the pitch for OrgesITPS! GGWP!</p>
+        <a href="#" class="read-more-link">Read More &raquo;</a>
+    </div>
+
+    <div class="news-placeholder" style="display: none;">  <i class="fa fa-newspaper-o"></i>
+        <p>News will be added VERY soon!  Stay tuned... <span style="font-size: 0.9em;">😉</span></p>
+    </div>
+</section>
+
+<section id="awards" class="hidden">
+    <h2 style="border-top: 1px solid #333; padding-top: 50px; margin-top: -20px;">Awards & Honours</h2>
+    <div class="awards-list">
+        <div class="award-item" style="--item-delay: 0s;">
+            <i class="award-icon fas fa-gloves"></i>
+            <h3 class="award-title">Golden Glove</h3>
+            <p class="award-votes">Votes will be tallied after the season concludes <span style="font-size: 1.2em;">😉</span></p>
+        </div>
+        <div class="award-item" style="--item-delay: 0.1s;">
+            <i class="award-icon fas fa-futbol"></i>
+            <h3 class="award-title">Ballon d'Or</h3>
+            <p class="award-votes">Votes will be tallied after the season concludes <span style="font-size: 1.2em;">😉</span></p>
+        </div>
+        <div class="award-item" style="--item-delay: 0.2s;">
+            <i class="award-icon fas fa-shoe-prints"></i>
+            <h3 class="award-title">Golden Boot</h3>
+            <p class="award-votes">Votes will be tallied after the season concludes <span style="font-size: 1.2em;">😉</span></p>
+        </div>
+        <div class="award-item" style="--item-delay: 0.3s;">
+            <i class="award-icon fas fa-award"></i>
+            <h3 class="award-title">Fair Play Award</h3>
+            <p class="award-votes">Votes will be tallied after the season concludes <span style="font-size: 1.2em;">😉</span></p>
+        </div>
+    </div>
+</section>
+
+<section id="teams" class="hidden">
+    <h2>Teams in OLL - (Orges La Liga)</h2>
+    <ul>
+        <li style="--item-delay: 0s;"><img src="team-logos/atalanta.png" alt="Atlanta Logo" class="team-logo">OLL | ATALANTA</li>
+        <li style="--item-delay: 0.05s;"><img src="team-logos/arsenal.png" alt="Arsenal Logo" class="team-logo">OLL | ARSENAL</li>
+        <li style="--item-delay: 0.1s;"><img src="team-logos/acmilan.png" alt="AC Milan Logo" class="team-logo">OLL | AC MILAN</li>
+        <li style="--item-delay: 0.15s;"><img src="team-logos/barcelona.png" alt="Barcelona Logo" class="team-logo">OLL | BARCELONA</li>
+        <li style="--item-delay: 0.2s;"><img src="team-logos/intermilan.png" alt="Inter Milan Logo" class="team-logo">OLL | INTER MILAN</li>
+        <li style="--item-delay: 0.25s;"><img src="team-logos/astonvilla.png" alt="Aston Villa Logo" class="team-logo">OLL | ASTON VILLA</li>
+        <li style="--item-delay: 0.3s;"><img src="team-logos/realmadrid.png" alt="Real Madrid Logo" class="team-logo">OLL | REAL MADRID</li>
+        <li style="--item-delay: 0.35s;"><img src="team-logos/atleticomadrid.png" alt="Atletico Madrid Logo" class="team-logo">OLL | ATLETICO MADRID</li>
+        <li style="--item-delay: 0.4s;"><img src="team-logos/mancity.png" alt="Manchester City Logo" class="team-logo">OLL | MANCHESTER CITY</li>
+        <li style="--item-delay: 0.45s;"><img src="team-logos/dortmund.png" alt="Dortmund Logo" class="team-logo">OLL | DORTMUND</li>
+        <li style="--item-delay: 0.5s;"><img src="team-logos/liverpool.png" alt="Liverpool Logo" class="team-logo">OLL | LIVERPOOL</li>
+        <li style="--item-delay: 0.55s;"><img src="team-logos/bayernmunich.png" alt="Bayern Munich Logo" class="team-logo">OLL | BAYERN MUNICH</li>
+    </ul>
+</section>
+
+<section id="future-stars" class="hidden">
+    <h2>Future Stars of OLL <i class="fa fa-star"></i></h2>
+    <img src="star1.png" alt="Future Star 1" class="future-star-image">
+    <img src="star2.png" alt="Future Star 2" class="future-star-image">
+    </section>
+
+
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
+        document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+        document.getElementById(sectionId).classList.remove("hidden");
+        document.querySelector(`nav a[href="#${sectionId}"]`).classList.add("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('home');
+    });
+</script>
+
+</body>
+</html>
